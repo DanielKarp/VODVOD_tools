@@ -4,11 +4,16 @@ import os
 CL_INTRO = 'CL-Intro.mp4'
 LISTFILE = 'concat_list.txt'
 
+
 def main():
     result = []
     parser = argparse.ArgumentParser()
-    parser.add_argument('file_name', help='The [partial] file name of the video[s] you want to edit')
-    parser.add_argument('--no-summary', action='store_false', dest='summary', help="Don't print a summary after completion")
+    parser.add_argument('file_name',
+                        help='The [partial] file name of the video[s] you want to edit')
+    parser.add_argument('--no-summary',
+                        action='store_false',
+                        dest='summary',
+                        help="Don't print a summary after completion")
     args = parser.parse_args()
 
     vids = [file for file in os.listdir(os.curdir) if args.file_name in file]
