@@ -25,10 +25,13 @@ def main():
     if os.path.exists(LISTFILE):
         os.remove(LISTFILE)
     res_str = f'Batch operation completed. {len(result)} files created:'
-    print('*' * len(res_str))
+    sep = '*' * len(res_str)
+    print(sep)
     print(res_str)
+    print(sep)
     for file in result:
         print(file)
+    print(sep)
 
 
 if __name__ == '__main__':
