@@ -24,7 +24,9 @@ def main():
             'Enter a file name or substring of a file name in the current directory. All files that match will have CL-Intro prepended. _FINAL will be appended to the file name.')
     if os.path.exists(LISTFILE):
         os.remove(LISTFILE)
-    print('Batch operation completed. Files created:')
+    res_str = f'Batch operation completed. {len(result)} files created:'
+    print('*' * len(res_str))
+    print(res_str)
     for file in result:
         print(file)
 
