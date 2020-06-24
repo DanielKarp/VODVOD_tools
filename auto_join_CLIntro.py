@@ -42,7 +42,8 @@ def main():
 
 
 def print_summary(result, sim):
-    res_str = f'{"SIMULATED " if sim else ""}Batch operation completed. {len(result)} files {"would\'ve been " if sim else ""}created:'
+    res_str = f'{"SIMULATED " if sim else ""}Batch operation completed. \
+{len(result)} files {"would have been " if sim else ""}created:'
     sep = '*' * len(res_str)
     print(sep)
     print(res_str)
