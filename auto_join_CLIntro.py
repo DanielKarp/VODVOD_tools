@@ -1,3 +1,4 @@
+__version__ = '0.1'
 import argparse
 import os
 
@@ -7,7 +8,9 @@ LISTFILE = 'concat_list.txt'
 
 def main():
     result = []
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='A tool to automate joining CL-Intro.mp4 to a clip or clips.',
+                                     epilog='Written by Daniel Karpelevitch (dkarpele)')
+    parser.add_argument('-V', '--version', action='version', version=f"%(prog)s ({__version__})")
     parser.add_argument('file_name',
                         help='The [partial] file name of the video[s] you want to edit')
     parser.add_argument('-n', '--no-summary',
