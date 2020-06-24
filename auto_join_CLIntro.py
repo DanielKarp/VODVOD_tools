@@ -14,6 +14,10 @@ def main():
                         action='store_false',
                         dest='summary',
                         help="Don't print a summary after completion")
+    parser.add_argument('-s', '--simulate',
+                        action='store_true',
+                        dest='simulate',
+                        help="Simulate calls to ffmpeg (useful for testing or seeing which files would be affected)")
     args = parser.parse_args()
 
     vids = [file for file in os.listdir(os.curdir) if args.file_name in file]
@@ -24,10 +28,12 @@ def main():
             print('file', f"'{vid}'", file=f)
         output = f'"{os.path.splitext(vid)[0] + "_FINAL" + os.path.splitext(vid)[1]}"'
         command = f'ffmpeg -f concat -safe 0 -i {LISTFILE} -c copy {output}'
-        print(f'\n****{command}\n')
+        print(f'\n**** {command}')
         result.append(output)
-        print('executing', command)
-        print('*\n'*10)
+        if args.simulate:
+            print('* some ffmpeg output *\n'*5)
+        else:
+            os.system(command)
 
     if os.path.exists(LISTFILE):
         os.remove(LISTFILE)
