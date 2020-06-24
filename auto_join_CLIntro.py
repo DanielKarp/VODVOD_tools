@@ -42,7 +42,7 @@ def print_summary(result):
     print(res_str)
     print(sep)
     for file in result:
-        print(file)
+        print(file.strip('"'))
     print(sep)
 
 
