@@ -10,7 +10,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('file_name',
                         help='The [partial] file name of the video[s] you want to edit')
-    parser.add_argument('--no-summary',
+    parser.add_argument('-n', '--no-summary',
                         action='store_false',
                         dest='summary',
                         help="Don't print a summary after completion")
@@ -38,11 +38,11 @@ def main():
     if os.path.exists(LISTFILE):
         os.remove(LISTFILE)
     if args.summary:
-        print_summary(result)
+        print_summary(result, args.simulate)
 
 
-def print_summary(result):
-    res_str = f'Batch operation completed. {len(result)} files created:'
+def print_summary(result, sim):
+    res_str = f'{"SIMULATED " if sim else ""}Batch operation completed. {len(result)} files {"would\'ve been " if sim else ""}created:'
     sep = '*' * len(res_str)
     print(sep)
     print(res_str)
