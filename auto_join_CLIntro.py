@@ -26,7 +26,8 @@ def main():
         command = f'ffmpeg -f concat -safe 0 -i {LISTFILE} -c copy {output}'
         print(f'\n****{command}\n')
         result.append(output)
-        os.system(command)
+        print('executing', command)
+        print('*\n'*10)
 
     if os.path.exists(LISTFILE):
         os.remove(LISTFILE)
