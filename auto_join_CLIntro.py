@@ -1,7 +1,7 @@
+__author__ = 'Daniel Karpelevitch (dkarpele)'
 __version__ = '0.1'
 import argparse
 import os
-
 CL_INTRO = 'CL-Intro.mp4'
 LISTFILE = 'concat_list.txt'
 
@@ -9,7 +9,7 @@ LISTFILE = 'concat_list.txt'
 def main():
     result = []
     parser = argparse.ArgumentParser(description='A tool to automate joining CL-Intro.mp4 to a clip or clips.',
-                                     epilog='Written by Daniel Karpelevitch (dkarpele)')
+                                     epilog=f'Written by {__author__}')
     parser.add_argument('-V', '--version',
                         action='version',
                         version=f"%(prog)s ({__version__})")
@@ -53,7 +53,7 @@ def main():
 
 def print_summary(result, sim):
     res_str = f'{"SIMULATED " if sim else ""}Batch operation completed. \
-{len(result)} files {"would have been " if sim else ""}created:'
+{len(result)} files {"would" if sim else "should"} have been created:'
     separator = '*' * len(res_str)
     print(separator, res_str, separator, sep='\n')
     for file in result:
