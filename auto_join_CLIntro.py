@@ -8,7 +8,7 @@ LISTFILE = 'concat_list.txt'
 
 def main():
     result = []
-    args = setup_parser()
+    args = get_args()
     vids = [file for file in os.listdir(os.curdir) if args.file_name in file]
     if args.verbose:
         verbose_intro(vids)
@@ -20,11 +20,10 @@ def main():
         if args.verbose:
             verbose_list(vid, command)
         result.append(output_filename)
-        if args.simulate:
-            if args.verbose:
-                print('- some ffmpeg output -\n' * 4)
-        else:
+        if not args.simulate:
             os.system(command)
+        elif args.verbose:
+            print('- some ffmpeg output -\n' * 4)
     if os.path.exists(LISTFILE):
         os.remove(LISTFILE)
         if args.verbose:
@@ -33,7 +32,7 @@ def main():
         print_summary(result, args.simulate)
 
 
-def setup_parser():
+def get_args():
     parser = argparse.ArgumentParser(description='A tool to automate joining CL-Intro.mp4 to a clip or clips.',
                                      epilog=f'Written by {__author__}')
     parser.add_argument('-V', '--version', action='version', version=f"%(prog)s ({__version__})")
