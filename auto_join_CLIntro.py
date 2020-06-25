@@ -31,28 +31,20 @@ def main():
 
     vids = [file for file in os.listdir(os.curdir) if args.file_name in file]
     if args.verbose:
-        print('* found files:')
-        for vid in vids:
-            print('*', vid)
-        print()
+        verbose_intro(vids)
     for vid in vids:
         with open(LISTFILE, mode='w') as f:
             print('file', CL_INTRO, file=f)
             print('file', f"'{vid}'", file=f)
-            if args.verbose:
-                print(f'* contents of {LISTFILE} are now:')
-                print('* file', CL_INTRO)
-                print('* file', f"'{vid}'")
         output = f'"{os.path.splitext(vid)[0] + "_FINAL" + os.path.splitext(vid)[1]}"'
         command = f'ffmpeg -f concat -safe 0 -i {LISTFILE} -c copy {output}'
         if args.verbose:
-            print(f'* executing: {command}')
+            verbose_list(vid, command)
         result.append(output)
         if args.simulate:
             print('- some ffmpeg output -\n' * 5)
         else:
             os.system(command)
-
     if os.path.exists(LISTFILE):
         os.remove(LISTFILE)
     if args.summary:
@@ -67,6 +59,20 @@ def print_summary(result, sim):
     for file in result:
         print(file.strip('"'))
     print(separator)
+
+
+def verbose_intro(vids):
+    print('* found files:')
+    for vid in vids:
+        print('*', vid)
+    print()
+
+
+def verbose_list(vid, command):
+    print(f'* contents of {LISTFILE} are now:')
+    print('* file', CL_INTRO)
+    print('* file', f"'{vid}'")
+    print(f'* executing: {command}')
 
 
 if __name__ == '__main__':
