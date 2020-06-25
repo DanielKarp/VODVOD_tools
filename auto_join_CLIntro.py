@@ -22,7 +22,7 @@ def main():
         result.append(output_filename)
         if args.simulate:
             if args.verbose:
-                print('- some ffmpeg output -\n' * 5)
+                print('- some ffmpeg output -\n' * 4)
         else:
             os.system(command)
     if os.path.exists(LISTFILE):
@@ -39,7 +39,7 @@ def setup_parser():
     parser.add_argument('-V', '--version', action='version', version=f"%(prog)s ({__version__})")
     parser.add_argument('-v', '--verbose', action='store_true', dest='verbose', help='Enable verbose output')
     parser.add_argument('-s', '--summary', action='store_true', dest='summary',
-                        help="Don't print a summary after completion")
+                        help="Print a summary after completion")
     parser.add_argument('-S', '--simulate', action='store_true', dest='simulate',
                         help="Simulate calls to ffmpeg (useful for testing or seeing which files would be affected)")
     parser.add_argument('file_name', help='The [partial] file name of the video[s] you want to edit')
@@ -77,7 +77,7 @@ def verbose_list(vid, command):
 
 
 def verbose_delete_list():
-    print(f'* deleted {LISTFILE}')
+    print(f'* deleting {LISTFILE}')
 
 
 if __name__ == '__main__':
