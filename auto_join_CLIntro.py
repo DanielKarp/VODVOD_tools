@@ -16,10 +16,10 @@ def main():
         with open(LISTFILE, mode='w') as f:
             print('file', CL_INTRO, file=f)
             print('file', f"'{vid}'", file=f)
-        output, command = make_command(vid)
+        output_filename, command = make_command(vid)
         if args.verbose:
             verbose_list(vid, command)
-        result.append(output)
+        result.append(output_filename)
         if args.simulate:
             if args.verbose:
                 print('- some ffmpeg output -\n' * 5)
