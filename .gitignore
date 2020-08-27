@@ -5,8 +5,7 @@
 /.idea/modules.xml
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/inspectionProfiles/Project_Default.xml
-/test1.mp4
-/test2.mp4
-/test3.mp4
+/test*
 /.idea/vcs.xml
 /.idea/VOD_tools.iml
+
