@@ -1,11 +1,11 @@
-/CL-Intro.mp4
 /venv/
 /.idea/.name
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/inspectionProfiles/Project_Default.xml
-/test*
 /.idea/vcs.xml
 /.idea/VOD_tools.iml
-
+/test*
+/CL_Intro.mp4
+/archive/
