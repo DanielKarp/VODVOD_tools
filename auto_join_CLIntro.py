@@ -6,7 +6,7 @@ CL_INTRO = 'CL-Intro.mp4'
 LISTFILE = 'concat_list.txt'
 
 
-def main():
+def join():
     result = []
     args = get_args()
     vids = [file for file in os.listdir(os.curdir) if args.file_name in file]
@@ -80,4 +80,4 @@ def verbose_delete_list():
 
 
 if __name__ == '__main__':
-    main()
+    join()

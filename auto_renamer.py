@@ -8,7 +8,7 @@ import os
 import cutie
 
 
-def main():
+def rename():
     args = get_args()
     search_str, append_str, prepend_str = args.file_name, args.append, args.prepend
     interactive, verbose, summary, simulate = args.interactive, args.verbose, args.summary, args.simulate
@@ -90,4 +90,4 @@ def verbose_intro(files):
 
 
 if __name__ == '__main__':
-    main()
+    rename()
