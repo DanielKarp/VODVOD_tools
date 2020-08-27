@@ -78,7 +78,7 @@ def print_summary(result, sim):
     separator = '*' * len(res_str)
     print(separator, res_str, separator, sep='\n')
     for file in result:
-        print(file.strip('"'))
+        print(file)
     print(separator)
 
 
