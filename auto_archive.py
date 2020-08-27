@@ -31,3 +31,4 @@ def archive():
 
 if __name__ == '__main__':
     archive()
+    input('\nDone, Press Enter to exit.')
