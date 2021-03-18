@@ -3,7 +3,6 @@ __version__ = '0.1'
 
 import argparse
 import os
-import os.path as path
 
 
 def finalize():
@@ -19,10 +18,10 @@ def finalize():
         verbose_intro(files)
     for old_name in files:  # loop through all files in the current directory
         try:
-            old_base, ext = path.splitext(old_name)
+            old_base, ext = os.path.splitext(old_name)
             new_name = prepend_str + old_base + append_str + ext
             if not simulate:
-                os.rename(old_name, new_name)  # os.finalize(old, new)
+                os.replace(old_name, new_name)  # os.finalize(old, new)
             if verbose:
                 print(f'renamed {old_name} to {new_name}')  # output to console
         except Exception as e:
@@ -59,7 +58,7 @@ def get_args():
                         help='The text to be concatenated to the start of matching files (optional)',
                         nargs='?', const='', default='')
     parser.add_argument('-a', '--append', dest='append',
-                        help='The text to be concatenated to the end of matching files'
+                        help='The text to be concatenated to the end of matching files\n'
                              '(optional, default is "_FINAL")',
                         nargs='?', const='', default='_FINAL')
     return parser.parse_args()
@@ -79,7 +78,7 @@ def verbose_intro(files):
     print('* found files:')
     for file in files:
         print(file)
-    print('* starting...:')
+    print('* starting...')
 
 
 if __name__ == '__main__':
